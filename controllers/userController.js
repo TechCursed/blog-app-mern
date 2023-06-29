@@ -1,5 +1,5 @@
 const userModel = require('../models/userModel')
-
+const bcrypt = require('bcryptjs')
 
 // 1. CREATE REGISTERED USER || POST REQUEST
 exports.registerController = async (req, res) => {
@@ -22,9 +22,14 @@ exports.registerController = async (req, res) => {
           message: "user already exisits",
         });
       }
-  
+       
+      //hashing the password
+      const salt = bcrypt.genSaltSync(10);
+      const hashedPassword = bcrypt.hashSync("B4c0/\/", salt);
+      // const hashedPassword = bcrypt.hash(password,10)
+
       //SAVE NEW USER
-      const user = new userModel({ username, email, password});
+      const user = new userModel({ username, email, password: hashedPassword});
       await user.save();
       return res.status(201).send({
         success: true,

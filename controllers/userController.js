@@ -24,9 +24,7 @@ exports.registerController = async (req, res) => {
       }
        
       //hashing the password
-      const salt = bcrypt.genSaltSync(10);
-      const hashedPassword = bcrypt.hashSync("B4c0/\/", salt);
-      // const hashedPassword = bcrypt.hash(password,10)
+      const hashedPassword = await bcrypt.hash(password, 10);
 
       //SAVE NEW USER
       const user = new userModel({ username, email, password: hashedPassword});
@@ -68,6 +66,45 @@ exports.getAllUsers = async (req,res) => {
 }
 
 // 3. LOGIN CONTROLLER || POST REQUEST
-exports.loginController = () => {
+exports.loginController = async (req,res) => {
+  try{
+      const {email,password} = req.body;
+      //validation
+      if(!email || !password){
+        return res.status(401).send({
+          success: false,
+          message: "Please provide username and password"
+        })
+      }
 
+      const user = await userModel.findOne({email});
+      if(!email){
+        return res.status(200).send({
+          success: false,
+          message: "email does not exist"
+        })
+      }
+
+     //PASSWORD VALIDATION
+     const isMatch = await bcrypt.compare(password, user.password)
+     if(!isMatch){
+        return res.status(401).send({
+          success: false,
+          message: "username or password incorrect"
+        })
+     }
+     return res.status(200).send({
+      success: true,
+      message: "login successful",
+      user
+     })
+  }
+  catch(error){
+    console.log(error)
+    return res.status(500).send({
+      success: false,
+      message: "Error in login",
+      error
+    })
+  }
 }

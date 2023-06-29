@@ -10,6 +10,9 @@ const app = express();
 //dotenv config
 dotenv.config()
 
+//router import
+const userRoutes = require('./routes/userRoutes')
+
 //middlewares
 app.use(cors());
 app.use(express.json());
@@ -18,14 +21,11 @@ app.use(morgan('dev'));
 //mongodb connection
 connectDB();
 
-//routes
-const PORT = process.env.PORT || 8080
-app.get('/', (req,res) => {
-    res.status(200).send({
-    message : "node server"
-    })
-})
 
+//routes
+app.use('/api/v1/user', userRoutes)
+
+const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
     console.log(`server running on port ${PORT}`)
 })

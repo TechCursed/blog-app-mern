@@ -11,7 +11,8 @@ const app = express();
 dotenv.config()
 
 //router import
-const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes');
+const blogRoutes = require('./routes/blogRoutes')
 
 //middlewares
 app.use(cors());
@@ -24,6 +25,8 @@ connectDB();
 
 //routes
 app.use('/api/v1/user', userRoutes)
+app.use('/api/v1/blog', blogRoutes)
+
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {

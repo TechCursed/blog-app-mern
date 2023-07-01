@@ -81,7 +81,29 @@ exports.updateBlogController = async (req,res) => {
 
 //GET || GET SINGLE BLOG DETAILS
 exports.getBlogByIdController = async (req,res) => {
- 
+  try{
+    const {id} = req.params;
+    const blog = await blogModel.findById(id);
+    if(!blog){
+      return res.status(404).send({
+        success: false,
+        message:"no blog with given id found"
+      })
+    }
+    return res.status(200).send({
+      success: true,
+      message: "blog fetched",
+      blog
+    })
+  }
+  catch(error){
+    console.log(error)
+    return res.status(400).send({
+      success: false,
+      message:"error getting single blog",
+      error
+    })
+  }
 } 
 
 //DELETE || DELETE BLOG

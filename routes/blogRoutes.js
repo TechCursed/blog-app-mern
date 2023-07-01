@@ -12,7 +12,7 @@ router.get('/all-blog', getAllBlogsController);
 router.post('/create-blog', createBlogController);
 
 //PUT || UPDATE BLOG
-router.post('/update-blog/:id', updateBlogController);
+router.put('/update-blog/:id', updateBlogController);
 
 //GET || GET SINGLE BLOG DETAILS
 router.get('/get-blog/:id', getBlogByIdController);

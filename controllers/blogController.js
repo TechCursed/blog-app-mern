@@ -55,16 +55,33 @@ exports.createBlogController = async (req,res) => {
       })
     }
 
-}
+} 
 
 //PUT || UPDATE BLOG
-exports.updateBlogController = () => {
-
+exports.updateBlogController = async (req,res) => {
+  try{
+    const {id} = req.params;
+    const {title,description,image} = req.body;
+    const blog = await blogModel.findByIdAndUpdate(id,{...req.body}, {new:true})
+    return res.status(200).send({
+      success: true,
+      message:"Blog updated",
+      blog,  
+    })
+   }
+   catch(error){
+     console.log(error);
+     return res.status(400).send({
+      success: false,
+      message: "Error updating the blog",
+      error,
+     })
+   }
 }
 
 //GET || GET SINGLE BLOG DETAILS
-exports.getBlogByIdController = () => {
-
+exports.getBlogByIdController = async (req,res) => {
+ 
 } 
 
 //DELETE || DELETE BLOG

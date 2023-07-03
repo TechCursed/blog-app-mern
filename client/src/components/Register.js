@@ -1,7 +1,28 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 
 const Register = () => {
+
+  //state 
+  const [inputs, setInputs] = useState({
+    name:'',
+    email:'',
+    password:''
+  })
+
+  const handleChange = (e) => {
+   setInputs((prevState) => ({
+    ...prevState,
+    [e.target.name]:e.target.value
+   }))
+  }
+
+  const handleSubmit = (e) => {
+   e.preventDefault();
+   console.log(inputs);
+  }
+
   return (
     <Container>
     <Row className="vh-100 d-flex justify-content-center align-items-center">
@@ -13,19 +34,29 @@ const Register = () => {
               <h2 className="fw-bold mb-2 text-uppercase ">Register</h2>
               <p className=" mb-5">Please enter your username, email and password!</p>
               <div className="mb-3">
-                <Form>
+                <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicText">
                     <Form.Label className="text-center">
                       Username
                     </Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="text" 
+                    name = "name"
+                    placeholder="Enter name" 
+                    value={inputs.name}
+                    onChange={handleChange}
+                    />
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className="text-center">
                       Email
                     </Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" 
+                    name ="email"
+                    placeholder="Enter email" 
+                    value={inputs.email}
+                    onChange={handleChange}
+                    />
                   </Form.Group>
 
                   <Form.Group
@@ -33,7 +64,12 @@ const Register = () => {
                     controlId="formBasicPassword"
                   >
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" 
+                    name = "password"
+                    placeholder="Password"
+                    value={inputs.password} 
+                    onChange={handleChange}
+                    />
                   </Form.Group>
                   <div className="d-grid">
                     <Button variant="primary" type="submit">

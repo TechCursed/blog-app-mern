@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const Register = () => {
 
@@ -11,6 +15,8 @@ const Register = () => {
     password:''
   })
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
    setInputs((prevState) => ({
     ...prevState,
@@ -18,11 +24,22 @@ const Register = () => {
    }))
   }
 
-  const handleSubmit = (e) => {
-   e.preventDefault();
-
-   
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("/api/v1/user/register", {
+        username: inputs.name,
+        email: inputs.email,
+        password: inputs.password,
+      });
+      if (data.success) {
+        alert("User Register Successfully");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
@@ -33,12 +50,12 @@ const Register = () => {
           <Card.Body>
             <div className="mb-3 mt-md-4">
               <h2 className="fw-bold mb-2 text-uppercase ">Register</h2>
-              <p className=" mb-5">Please enter your username, email and password!</p>
+              <p className=" mb-5">Please enter your name, email and password!</p>
               <div className="mb-3">
                 <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicText">
                     <Form.Label className="text-center">
-                      Username
+                      name
                     </Form.Label>
                     <Form.Control type="text" 
                     name = "name"
@@ -81,9 +98,9 @@ const Register = () => {
                 <div className="mt-3">
                   <p className="mb-0  text-center">
                     Already have an account?{" "}
-                    <a href="/login" className="text-primary fw-bold">
-                    Login
-                    </a>
+                    <Link to="/login" className="text-primary fw-bold">
+                     Log In
+                    </Link>
                   </p>
                 </div>
               </div>

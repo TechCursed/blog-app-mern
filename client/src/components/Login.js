@@ -4,6 +4,8 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {authActions} from '../redux/store';
 
 const Login = () => {
 
@@ -15,6 +17,7 @@ const Login = () => {
   })
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
    setInputs((prevState) => ({
@@ -32,7 +35,8 @@ const Login = () => {
       });
       if (data.success) {
         alert("User Login Successfully");
-        // navigate("/login");
+        dispatch(authActions.login())
+        navigate("/blogs");
       }
     } catch (error) {
       console.log(error);

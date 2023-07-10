@@ -4,24 +4,47 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
+import { authActions } from '../redux/store';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import '../App.css';
 
 const Header = () => {
       //accessing global login state
       const isLogin = useSelector((state) => state.isLogin)
-      console.log(isLogin);
+
+      const navigate = useNavigate();
+      const dispatch = useDispatch();
+
+      // console.log(isLogin);
       //state
       const [value, setValue] = useState();
+
+      const handleLogout = () => {
+        try {
+          dispatch(authActions.logout());
+          alert("Logout Successfully");
+          localStorage.clear();
+          navigate("/login");
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+
+
   return (
     <div>
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar collapseOnSelect expand="lg" className="appnav shadow-sm fixed-top mb-4" >
       <Container>
-        <Navbar.Brand href="/">MERN Blog App</Navbar.Brand>
+        {/* <Navbar.Brand href="/"></Navbar.Brand> */}
+        <Link to="/" style={{ textDecoration: 'none', color:'#010101', margin:'5px', fontSize:'1.5rem' }}>BLOG APP</Link>
         {
           // "All Blogs" and "My Blogs" are avaialable only if isLogin is true
           isLogin && (
             <div>
-           <Link to="/login" style={{ textDecoration: 'none', color:'black', margin:'5px'}}>All Blogs</Link>
-           <Link to="/login" style={{ textDecoration: 'none', color:'black', margin:'5px'}}>My Blogs</Link>
+           <Link to="/login" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>All Blogs</Link>
+           <Link to="/login" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>My Blogs</Link>
             </div>
           )
         }
@@ -34,14 +57,14 @@ const Header = () => {
             {
               !isLogin && (
                 <>
-                <Link to="/login" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem', margin:'5px'}}>Login</Link>
                 <Link to="/register" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem',margin:'5px'}}>Register</Link>                
+                <Link to="/login" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem', margin:'5px'}}>Login</Link>
                 </>
               )
             }
             {
               isLogin && (
-                <Link to="/logout" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem',margin:'5px'}}>Logout</Link>
+                <Link to="/login" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem',margin:'5px'}} onClick={handleLogout}>Logout</Link>
               )
             }
           </Nav>

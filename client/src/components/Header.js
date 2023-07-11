@@ -8,6 +8,7 @@ import { authActions } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import { toast } from 'react-hot-toast';
 
 const Header = () => {
       //accessing global login state
@@ -23,7 +24,7 @@ const Header = () => {
       const handleLogout = () => {
         try {
           dispatch(authActions.logout());
-          alert("Logout Successfully");
+          toast.success("Logout Successfully");
           localStorage.clear();
           navigate("/login");
         } catch (error) {

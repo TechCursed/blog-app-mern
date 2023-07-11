@@ -8,12 +8,14 @@ import Blogs from './pages/Blogs';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import UserBlogs from './pages/UserBlogs';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
       <Router>
+      <Toaster/>
         <Header />
         <Routes>
           <Route path='/' element={<Blogs />} />

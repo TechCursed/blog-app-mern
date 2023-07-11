@@ -6,6 +6,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {authActions} from '../redux/store';
+import toast from 'react-hot-toast';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -34,14 +37,17 @@ const Login = () => {
         password: inputs.password,
       });
       if (data.success) {        
-        alert("User Login Successfully");
+        // alert("User Login Successfully");
+        toast.success('User Login Successfully')
         //saving the id of the user in localstorage for getting/deleting/updating user blogs
         localStorage.setItem('userId', data?.user._id)        
         dispatch(authActions.login())
         navigate("/blogs");
       }
     } catch (error) {
-      alert('wrong username or password')
+      // alert('wrong username or password')
+      toast.error('Incorrect username or password')
+
       console.log(error);
     }
   };

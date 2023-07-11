@@ -3,7 +3,6 @@ import React from 'react';
 import { useState , useEffect } from 'react';
 import BlogCard from '../components/BlogCard';
 import LoadingSpinnerComponent from 'react-spinners-components';
-import { Container } from 'react-bootstrap';
 
 const Blogs = () => {
 
@@ -34,7 +33,7 @@ const Blogs = () => {
   if(isLoading){
 
     return <div className='d-flex justify-content-center flex-column' style={{marginTop:"250px"}}>
-      <h2 style={{textAlign:'center'}}>Please wait while we load blogs fro you..</h2>
+      <h2 style={{textAlign:'center'}}>Please wait while we load blogs for you..</h2>
       <LoadingSpinnerComponent type={ 'Spinner' } color={ 'black' } size={ '150px' } />
     </div>
    }

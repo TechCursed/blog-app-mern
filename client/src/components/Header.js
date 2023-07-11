@@ -36,16 +36,17 @@ const Header = () => {
 
   return (
     <div>
-    <Navbar collapseOnSelect expand="lg" className="appnav shadow-sm fixed-top mb-4" >
+    <Navbar collapseOnSelect expand="lg" className="appnav shadow-sm fixed-top mb-5" >
       <Container>
         {/* <Navbar.Brand href="/"></Navbar.Brand> */}
-        <Link to="/" style={{ textDecoration: 'none', color:'#010101', margin:'5px', fontSize:'1.5rem' }}>BLOG💯</Link>
+        <Link to="/" style={{ textDecoration: 'none', color:'#010101', margin:'5px', fontSize:'1.5rem' }}>Blog App</Link>
         {
           // "All Blogs" and "My Blogs" are avaialable only if isLogin is true
           isLogin && (
             <div>
            <Link to="/blogs" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>BLOGS</Link>
            <Link to="/my-blogs" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>MY BLOGS</Link>
+           <Link to="/create-blog" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>CREATE</Link>
             </div>
           )
         }
@@ -58,8 +59,8 @@ const Header = () => {
             {
               !isLogin && (
                 <>
-                <Link to="/register" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem',margin:'5px'}}>Register</Link>                
-                <Link to="/login" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem', margin:'5px'}}>Login</Link>
+                <Link to="/register" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem',margin:'5px'}}>REGISTER</Link>                
+                <Link to="/login" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem', margin:'5px'}}>LOGIN</Link>
                 </>
               )
             }

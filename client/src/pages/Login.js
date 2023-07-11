@@ -33,12 +33,15 @@ const Login = () => {
         email: inputs.email,
         password: inputs.password,
       });
-      if (data.success) {
+      if (data.success) {        
         alert("User Login Successfully");
+        //saving the id of the user in localstorage for getting/deleting/updating user blogs
+        localStorage.setItem('userId', data?.user._id)        
         dispatch(authActions.login())
         navigate("/blogs");
       }
     } catch (error) {
+      alert('wrong username or password')
       console.log(error);
     }
   };

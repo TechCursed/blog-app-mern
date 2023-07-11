@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useState , useEffect } from 'react';
-import BlogCard from './BlogCard';
+import BlogCard from '../components/BlogCard';
 
 const Blogs = () => {
 

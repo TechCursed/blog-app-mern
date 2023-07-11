@@ -38,13 +38,13 @@ const Header = () => {
     <Navbar collapseOnSelect expand="lg" className="appnav shadow-sm fixed-top mb-4" >
       <Container>
         {/* <Navbar.Brand href="/"></Navbar.Brand> */}
-        <Link to="/" style={{ textDecoration: 'none', color:'#010101', margin:'5px', fontSize:'1.5rem' }}>BLOG APP</Link>
+        <Link to="/" style={{ textDecoration: 'none', color:'#010101', margin:'5px', fontSize:'1.5rem' }}>BLOG💯</Link>
         {
           // "All Blogs" and "My Blogs" are avaialable only if isLogin is true
           isLogin && (
             <div>
-           <Link to="/login" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>All Blogs</Link>
-           <Link to="/login" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>My Blogs</Link>
+           <Link to="/blogs" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>BLOGS</Link>
+           <Link to="/my-blogs" style={{ textDecoration: 'none', color:'#010101', margin:'5px'}}>MY BLOGS</Link>
             </div>
           )
         }

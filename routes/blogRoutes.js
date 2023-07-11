@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllBlogsController, createBlogController, updateBlogController, getBlogByIdController, deleteBlogController } = require('../controllers/blogController');
+const { getAllBlogsController, createBlogController, updateBlogController, getBlogByIdController, deleteBlogController, userBlogControlller } = require('../controllers/blogController');
 
 //router object
 const router = express.Router();
@@ -19,5 +19,8 @@ router.get('/get-blog/:id', getBlogByIdController);
 
 //DELETE || DELETE BLOG
 router.delete('/delete-blog/:id', deleteBlogController);
+
+//GET || user blog
+router.get("/user-blog/:id", userBlogControlller);
 
 module.exports = router; 

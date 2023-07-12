@@ -9,6 +9,7 @@ import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import UserBlogs from './pages/UserBlogs';
 import { Toaster } from 'react-hot-toast';
+import CreateBlog from './pages/CreateBlog';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/my-blogs' element={<UserBlogs />} />         
+          <Route path='/create-blog' element={<CreateBlog />} />         
         </Routes>
       </Router>       
       </Provider>

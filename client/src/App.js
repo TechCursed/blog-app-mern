@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import UserBlogs from './pages/UserBlogs';
 import { Toaster } from 'react-hot-toast';
 import CreateBlog from './pages/CreateBlog';
+import BlogDetails from './pages/BlogDetails';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/my-blogs' element={<UserBlogs />} />         
-          <Route path='/create-blog' element={<CreateBlog />} />         
+          <Route path='/create-blog' element={<CreateBlog />} />     
+          <Route path='/blog-details/:id' element={<BlogDetails />} />        
         </Routes>
       </Router>       
       </Provider>

@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {authActions} from '../redux/store';
 import toast from 'react-hot-toast';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
 
@@ -53,6 +52,7 @@ const Login = () => {
   };
 
   return (
+    <div style={{backgroundColor:"rgb(248 250 252)", overflowY:"hidden"}}>
     <Container>
     <Row className="vh-100 d-flex justify-content-center align-items-center">
       <Col md={8} lg={6} xs={12}>
@@ -110,6 +110,7 @@ const Login = () => {
       </Col>
     </Row>
   </Container>
+  </div>
   )
 }
 

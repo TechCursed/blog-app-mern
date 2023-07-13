@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,8 +7,8 @@ import {Link} from 'react-router-dom';
 import { authActions } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
 import { toast } from 'react-hot-toast';
+import '../App.css';
 
 const Header = () => {
       //accessing global login state
@@ -19,7 +19,7 @@ const Header = () => {
 
       // console.log(isLogin);
       //state
-      const [value, setValue] = useState();
+      // const [value, setValue] = useState();
 
       const handleLogout = () => {
         try {

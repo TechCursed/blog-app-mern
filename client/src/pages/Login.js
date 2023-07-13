@@ -52,9 +52,16 @@ const Login = () => {
   };
 
   return (
-    <div style={{backgroundColor:"rgb(248 250 252)", overflowY:"hidden"}}>
+    <div style={{backgroundColor:"rgb(248 250 252)", overflowY:"hidden", height:"100vh"}}>
+
+    <Container className='d-flex flex-column justify-content-center mt-5 pt-5 '>
+      <h4>Too lazy to sign up? login with dummy account</h4>
+      <h5>E-mail : test@admin.com </h5>
+      <h5>Password : testadmin</h5>
+    </Container>
+
     <Container>
-    <Row className="vh-100 d-flex justify-content-center align-items-center">
+    <Row className="d-flex justify-content-center align-items-center">
       <Col md={8} lg={6} xs={12}>
         <div className="border border-3 border-primary"></div>
         <Card className="shadow">

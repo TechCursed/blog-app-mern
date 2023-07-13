@@ -12,15 +12,13 @@ import '../App.css';
 
 const Header = () => {
       //accessing global login state
-      const isLogin = useSelector((state) => state.isLogin)
+      let isLogin = useSelector((state) => state.isLogin)
+      isLogin = isLogin || localStorage.getItem("userId");
 
       const navigate = useNavigate();
       const dispatch = useDispatch();
 
       // console.log(isLogin);
-      //state
-      // const [value, setValue] = useState();
-
       const handleLogout = () => {
         try {
           dispatch(authActions.logout());
@@ -59,8 +57,8 @@ const Header = () => {
             {
               !isLogin && (
                 <>
-                <Link to="/register" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem',margin:'5px'}}>REGISTER</Link>                
                 <Link to="/login" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem', margin:'5px'}}>LOGIN</Link>
+                <Link to="/register" style={{ textDecoration: 'none', color:'black', fontSize:'1.5rem',margin:'5px'}}>REGISTER</Link>                
                 </>
               )
             }

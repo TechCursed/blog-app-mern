@@ -42,8 +42,9 @@ const Register = () => {
   };
 
   return (
+    <div style={{backgroundColor:"rgb(248 250 252)", overflowY:"hidden"}}>
     <Container>
-    <Row className="vh-100 d-flex justify-content-center align-items-center">
+    <Row className="vh-100 d-flex justify-content-center align-items-center pt-4">
       <Col md={8} lg={6} xs={12}>
         <div className="border border-3 border-primary"></div>
         <Card className="shadow">
@@ -110,6 +111,7 @@ const Register = () => {
       </Col>
     </Row>
   </Container>
+  </div>
   )
 }
 

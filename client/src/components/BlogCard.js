@@ -1,15 +1,16 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import { Container } from 'react-bootstrap';
-import { FiEdit } from "react-icons/fi";
+import { MdDelete,MdEditNote } from "react-icons/md";
+import { FaUserEdit } from "react-icons/fa";
 
-const BlogCard = ( { title, description, image, time, username } ) => {
+const BlogCard = ( { title, description, image, time, username, id, isUser } ) => {
 
   return (
-    <div>
+    <div style={{backgroundColor:"rgb(248 250 252)", overflowY:"hidden"}}>
 
-    <Container className='d-flex flex-column w-100 justify-content-center mt-5 '>
-
+    <Container className='d-flex flex-column w-100 justify-content-center pt-5 '>
+     
     <Card className='mt-4'>
         <Card.Img variant="top" src={image}
         style={{width:"100",
@@ -17,13 +18,20 @@ const BlogCard = ( { title, description, image, time, username } ) => {
         objectFit: "cover",
         }
         }/>
+        {isUser && (
+        <Container className="d-flex justify-content-end">
+          <button type="button" class="btn btn-dark m-1">Edit Blog <MdEditNote style={{fontSize:"1.5rem"}}/></button>
+          <button type="button" class="btn btn-danger m-1">Delete Blog <MdDelete style={{fontSize:"1.5rem"}}/></button>
+        </Container>
+      )}
         <Card.Body>
-        <Card.Text>{username} <FiEdit /> </Card.Text>
+        <Card.Text> <FaUserEdit style={{paddingBottom:"6px", fontSize:"1.5rem"}}/> {username} </Card.Text>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>
         <Card.Text>{time}</Card.Text>
         </Card.Body>
       </Card>
+
       </Container>
 
 

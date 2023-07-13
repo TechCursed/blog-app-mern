@@ -39,11 +39,12 @@ const Blogs = () => {
    }
 
   return (
-    <div className='mt-4'>
+    <div>
       {
          blogs && blogs.map((blog) => {
          return <BlogCard
-            // username = {blog.user.username}
+            id={blog._id}
+            isUser={localStorage.getItem("userId")===blog.user._id}
             title={blog?.title}
             description={blog?.description}
             image={blog?.image}

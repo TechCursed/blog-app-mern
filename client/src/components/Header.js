@@ -7,8 +7,8 @@ import {Link} from 'react-router-dom';
 import { authActions } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
 import { toast } from 'react-hot-toast';
+import '../App.css';
 
 const Header = () => {
       //accessing global login state

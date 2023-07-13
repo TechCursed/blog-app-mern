@@ -7,15 +7,17 @@ import LoadingSpinnerComponent from 'react-spinners-components';
 const UserBlogs = () => {
 
   const [blogs, setBlogs] = useState([]);
+  const [uname,setUname] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  //get user blogs
+  //GET USER BLOGS
   const getUserBlogs = async () => {
     try {
       const id = localStorage.getItem("userId");
       const { data } = await axios.get(`//localhost:8080/api/v1/blog/user-blog/${id}`);
       if (data?.success) {
         setBlogs(data?.userBlog.blogs);
+        setUname(data?.userBlog.username);
         setIsLoading(false);
       }
     } catch (error) {
@@ -26,7 +28,7 @@ const UserBlogs = () => {
   useEffect(() => {
     getUserBlogs();
   }, []);
-  console.log(blogs);
+  // console.log(blogs);
 
   if(isLoading)
   {
@@ -54,12 +56,11 @@ const UserBlogs = () => {
             title={blog.title}
             description={blog.description}
             image={blog.image}
-            username={blog.user.username}
+            username={uname}
             time={blog.createdAt}
           />
         ))
         }
-
 
     </div>
   );

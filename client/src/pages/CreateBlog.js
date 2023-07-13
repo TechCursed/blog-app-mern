@@ -45,16 +45,14 @@ const CreateBlog = () => {
       }
     }
     
-    // console.log(inputs)
-
     return (
-        <div className='d-flex justify-content-center flex-column' style={{marginTop:"100px"}}>
+        <div className='d-flex justify-content-center flex-column' style={{marginTop:"80px"}}>
           <Container>
-          <h1 className="mb-4"> Create your own blog</h1>
+          <h1 className="mb-2"> Create your own blog</h1>
 
           <Form onSubmit={handleSubmit} >
 
-          <Form.Group className="mb-3" controlId="formBasicText">
+          <Form.Group className="mb-2" controlId="formBasicText">
               <Form.Label>Title</Form.Label>
               <Form.Control 
                     type="text" 
@@ -91,7 +89,7 @@ const CreateBlog = () => {
                     />
              </Form.Group>
 
-             <Button variant="dark w-100 mt-4" type="submit"> Publish Blog </Button>
+             <Button variant="dark w-100 mt-2" type="submit"> Publish Blog </Button>
 
           </Form>
           </Container>
@@ -101,33 +99,3 @@ const CreateBlog = () => {
 }
 
 export default CreateBlog;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      // try {
-      //   const { data } = await axios.post("/api/v1/blog/create-blog", {
-      //     title: inputs.title,
-      //     description: inputs.description,
-      //     image: inputs.image,
-      //     user: id,
-      //   });
-      //   if (data?.success) {
-      //     toast.success("Blog Created");
-      //     navigate("/my-blogs");
-      //   }
-      // } catch (error) {
-      //   console.log(error);
-      // }

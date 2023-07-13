@@ -8,21 +8,24 @@ import Form from 'react-bootstrap/Form';
   const BlogDetails = () => {
 
   const [blog, setBlog] = useState({});
-  const id = useParams().id;
+  const blogid = useParams().id;
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({});
 
   // FETCH BLOG DETAILS
   const getBlogDetail = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/blog/get-blog/${id}`);
+        const { data } = await axios.get(`//localhost:8080/api/v1/blog/get-blog/${blogid}`);
       if (data?.success) {
         setBlog(data?.blog);
         setInputs({
           title: data?.blog.title,
           description: data?.blog.description,
           image: data?.blog.image,
-        });
+          id: data?.blog.user
+        }
+
+        );
       }
     } catch (error) {
       console.log(error);
@@ -31,7 +34,9 @@ import Form from 'react-bootstrap/Form';
 
   useEffect(() => {
     getBlogDetail();
-  }, [id]);
+  }, [blogid]);
+
+  console.log(blog)
 
   // INPUT CHANGE
   const handleChange = (e) => {
@@ -45,11 +50,11 @@ import Form from 'react-bootstrap/Form';
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`/api/v1/blog/update-blog/${id}`, {
+      const { data } = await axios.put(`//localhost:8080/api/v1/blog/update-blog/${blogid}`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,
-        user: id,
+        user: inputs.id,
       });
       if (data?.success) {
         toast.success("Blog Updated");
@@ -59,7 +64,7 @@ import Form from 'react-bootstrap/Form';
       console.log(error);
     }
   };
-//   console.log(blog);
+
   return (
     <div className='d-flex justify-content-center flex-column' style={{marginTop:"100px"}}>
     <Container>

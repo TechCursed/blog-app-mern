@@ -3,7 +3,7 @@ import React from 'react';
 import { useState , useEffect } from 'react';
 import BlogCard from '../components/BlogCard';
 import LoadingSpinnerComponent from 'react-spinners-components';
-
+ 
 const Blogs = () => {
 
   const [blogs, setBlogs] = useState([]);
@@ -17,7 +17,7 @@ const Blogs = () => {
        if(data?.success){
         setBlogs(data?.blogs);
         setIsLoading(false);
-        console.log(data);
+        // console.log(data);
        }
     }
     catch(error){
@@ -43,8 +43,8 @@ const Blogs = () => {
       {
          blogs && blogs.map((blog) => {
          return <BlogCard
-            id={blog._id}
-            isUser={localStorage.getItem("userId")===blog.user._id}
+            id={blog?._id}
+            isUser={localStorage.getItem("userId") === blog?.user?._id}
             title={blog?.title}
             description={blog?.description}
             image={blog?.image}

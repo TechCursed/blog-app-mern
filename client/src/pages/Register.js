@@ -4,11 +4,11 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 
 const Register = () => {
 
-  //state 
+  //STATE
   const [inputs, setInputs] = useState({
     name:'',
     email:'',
@@ -33,7 +33,7 @@ const Register = () => {
         password: inputs.password,
       });
       if (data.success) {
-        alert("User Register Successfully");
+        toast.success("User Register Successfully");
         navigate("/login");
       }
     } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -19,7 +19,7 @@ const Header = () => {
 
       // console.log(isLogin);
       //state
-      const [value, setValue] = useState();
+      // const [value, setValue] = useState();
 
       const handleLogout = () => {
         try {

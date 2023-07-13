@@ -5,13 +5,12 @@ import { MdDelete,MdEditNote } from "react-icons/md";
 import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
-
 const BlogCard = ( { title, description, image, time, username, id, isUser } ) => {
   
   const navigate = useNavigate();
 
   const handleEdit = () => {
-   navigate(`/blog-details/${id}`);
+    navigate(`/blog-details/${id}`);
   }
 
   return (
@@ -37,7 +36,7 @@ const BlogCard = ( { title, description, image, time, username, id, isUser } ) =
         <Card.Text> <FaUserEdit style={{paddingBottom:"6px", fontSize:"1.5rem"}}/> {username} </Card.Text>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>
-        <Card.Text>{time}</Card.Text>
+        <Card.Text>{time.slice(0,10)}</Card.Text>
         </Card.Body>
       </Card>
 

@@ -1,6 +1,8 @@
 # Blog-app-mern
 This is a Full Stack Blog application built using the MERN stack (MongoDB, Express, React, Node.js). The application allows users to register and log in, view their own blog posts as well as those of other users, delete and edit their own blog posts, and provides state management using Redux.
 
+Demo : ([https://redux-ecommerce-app.vercel.app/](https://mern-blog-app-nine.vercel.app/))
+
 ## Technologies Used
 * MongoDB: A NoSQL database used to store the blog posts and user information.
 * Express: A backend framework used to handle server-side logic and API endpoints.
